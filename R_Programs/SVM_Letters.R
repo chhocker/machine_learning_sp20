@@ -11,9 +11,9 @@ testset <- letterdata[testRows,]
 # The training set contains all the other rows
 trainset <- letterdata[-testRows,]
 
-for (gam in c(0.002, 0.004, 0.005, 0.006, 0.008, 1, 1.5)) {
+for (gam in c(0.006, 0.008, 1, 1.5)) {
   
-  model <- svm(factor(letter)~., data = trainset, kernel = "radial", gamma = gam, cost = 10, type = "C-classification")
+  model <- svm(factor(letter)~., data = trainset, kernel = "radial", gamma = gam, cost = 15, type = "C-classification")
   
   prediction <- predict(model, testset[,-1])
   confusionMatrix <- table(pred = prediction, true = testset$letter)
